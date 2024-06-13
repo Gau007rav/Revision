@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>optimization</title>
+</head>
+<body>
+    <button id="btn1">btnCount</button>
+    <span id="trgr">trigger</span>
+    <script>
+        let count=0;
+        let triggerCount=0;
+        let btn = document.querySelector("#btn1")
+        let trigger= document.querySelector("#trgr")
+        function myDebounce(cb,d){
+            let timer
+            return function(...args){
+                if(timer) clearTimeout(timer)
+                timer = setTimeout(()=>{
+                    cb(...args)
+                },d)
+            }
+        }
+
+        function myThrottle(cb,d){
+            let last =0;
+            return function(...args){
+                let now = new Date().getTime();
+                if(now-last<d) return
+                last = now
+                return cb(...args);
+             
+                
+            }
+        }
+        let triggerEvent = myDebounce(()=>{
+            trigger.innerHTML=triggerCount++
+        },800)
+
+        let throttleEvent = myThrottle(()=>{
+            trigger.innerHTML=triggerCount++
+        },800)
+        btn.addEventListener("click",()=>{
+             btn.innerHTML=count++
+             //triggerEvent();
+             throttleEvent();
+        })
+    </script>
+</body>
+</html>

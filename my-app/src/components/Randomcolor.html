@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>random color</title>
+</head>
+<body>
+     <button id="start">start</button> 
+     <button id="stop">stop</button> 
+     <input class="input"></input>
+     <button class="dom">dark</button>
+</body>
+
+<script>
+    function randomColor(){
+        let hex ="0123456789ABCDEF"
+        let color = "#";
+        for(let i=0;i<6;i++){
+            color += hex[Math.floor(Math.random()*16)]
+        }
+        return color;
+    }
+    //console.log(randomColor())
+     let interval;
+    let startChangeColor = function(){
+       interval= setInterval(generate,2000)
+        function generate (){
+            document.body.style.backgroundColor=randomColor()
+        }
+    }
+
+    let stopChangeColor = function(){
+        clearInterval(interval)
+    }
+
+    let start = document.querySelector("#start")
+    start.addEventListener("click",startChangeColor)
+    let stop= document.querySelector("#stop");
+    stop.addEventListener("click",stopChangeColor)
+    let dom = document.querySelector(".dom")
+    let input = document.querySelector(".input")
+    let newElement = document.createElement("span")
+    
+    let addData = document.createTextNode("gaurav and backchodi")    
+     newElement.appendChild(addData)
+     document.body.appendChild(newElement)
+     
+     dom.addEventListener("click",()=>{
+           let data = input.value
+           let newdiv = document.createElement("div")
+           newdiv.textContent=data;
+          let todo =document.body.appendChild(newdiv)
+          todo.addEventListener("dblclick" ,()=>{
+                 todo.remove();
+          })
+           input.value=""
+     })      
+       
+
+</script>
+</html>

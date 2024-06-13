@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document  object model</title>
+</head>
+<body>
+    <label>input here</label>
+    <input class="input"></input>
+
+
+
+    <script>
+         let input = document.querySelector(".input")
+         let newElement = document.createElement("button")
+         newElement.className="btn"
+         newElement.textContent=("button")
+         document.body.appendChild(newElement)
+         let btn = document.getElementsByClassName("btn")
+         let box = document.createElement("div")
+            box.className="box"
+            document.body.appendChild(box)
+            // box = document.querySelector(".box")
+         
+         
+         document.body.appendChild(box)
+         btn[0].addEventListener("click" ,()=>{
+            
+
+           let task = input.value
+           console.log(task)
+           box1.innerHTML +=task 
+           "\n"
+           input.value(" ")
+           
+           
+         })
+
+    </script>
+</body>
+</html>

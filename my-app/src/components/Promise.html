@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Promise</title>
+</head>
+<body>
+    <button id="btn1">PromiseResolve</button>
+    <button id="btn2">PromiseReject</button>
+    <div id="div1" style="border: 2px solid green;">parent
+        <div id="div2" style="border: 3px solid red;">child1
+            <div id="div3 " style="border: 4px solid blue;">child2</div>
+        </div>
+    </div>
+    <div id="div2">child1</div>
+    <script>
+        let btn1= document.querySelector("#btn1")
+        let btn2= document.querySelector("#btn2")
+        let div1= document.querySelector("#div1")
+        let div2= document.querySelector("#div2")
+        let div3= document.querySelector("#div3")
+        
+        
+        div1.addEventListener("click",()=>{
+            console.log("div1 clicked")
+        })
+        
+        let pro= new Promise((resolve,reject)=>{
+            let roomCleaned=false
+            if(roomCleaned){
+                resolve("go to play")
+            }
+            else{
+                reject("saaf kr phle")
+            }
+        })
+
+        pro.then((data)=>{
+            console.log(data)
+        }).catch((err)=>{
+            console.log(err)
+        })
+    </script>
+</body>
+</html>

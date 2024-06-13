@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>color change</title>
+    <style>
+        .square{
+            height: 100px;
+            width: 100px;
+            border: 2px solid black;
+            
+        }
+        #square1{
+            background-color: red;
+            margin-top: 3px;
+        }
+        #square2{
+            background-color: green;
+            margin-top: 3px;
+        }
+        #square3{
+            background-color: grey;
+            margin-top: 3px;
+        }
+        #square4{
+            background-color: yellow;
+            margin-top: 3px;
+        }
+        .container{
+            display: flex;
+            flex-direction: row;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+    <div class="square" id="square1"></div>
+    <div class="square" id="square2"></div>
+    <div class="square" id="square3"></div>
+    <div class="square" id="square4"></div>
+    </div>
+    <script>
+        let buttons=document.querySelectorAll(".square")
+       // console.log(buttons)
+       buttons.forEach((button)=>{
+        button.addEventListener("click",(e)=>{
+            // console.log(e)
+             //console.log(e.target)
+             if(e.target.id==="square1"){
+                document.body.style.backgroundColor = "red";
+             }
+             if(e.target.id==="square2"){
+                document.body.style.backgroundColor = "green";
+             }
+             if(e.target.id==="square3"){
+                document.body.style.backgroundColor = "grey";
+             }
+             if(e.target.id==="square4"){
+                document.body.style.backgroundColor = "yellow";
+             }
+        })
+       })
+    </script>
+</body>
+</html>

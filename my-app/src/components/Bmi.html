@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bmi</title>
+</head>
+<body>
+    <div>
+        <label>enter your height in cm</label>
+        <input type="text" placeholder="enter height"  class="height"></input><br></br>
+        <label>enter your weight in kg</label>
+        <input type="text" placeholder="enter weight"  class="weight"></input><br></br>
+        <button class="button">submit</button>
+        <textarea class="result"><li>Underweight: BMI < 18.5
+            Normal weight: 18.5 <= BMI < 25
+            Overweight: 25 <= BMI < 30
+            Obesity (Class 1): 30 <= BMI < 35
+            Obesity (Class 2): 35 <= BMI < 40
+            Obesity (Class 3): BMI >= 40</li></textarea>
+
+    </div>
+    <script>
+        let button = document.querySelector(".button")
+        button.addEventListener("click", (e)=>{
+            e.preventDefault()
+            let height = parseInt(document.querySelector(".height").value)
+            let weight = parseInt(document.querySelector(".weight").value)
+            let result = document.querySelector(".result");
+            if(height==""||height<0||isNaN(height)){
+                result.innerHTML=`please give valid ${height}`
+            }
+           else if(weight==""||weight<0||isNaN(weight)){
+                result.innerHTML=`please give valid ${weight}`
+            }
+            else{
+               let  BMI = (weight / ((height  / 100) * (height  / 100))).toFixed(2)
+               result.innerHTML= BMI
+            }
+        })
+    </script>
+</body>
+</html>

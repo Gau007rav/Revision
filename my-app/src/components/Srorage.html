@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>storage</title>
+</head>
+<body>
+    <label>name</label>
+    <input id="name" type="text">
+    <label>age</label>
+    <input id="age" type="text">
+    <h3>my name is <span id="nameTag"></span></h3>
+    <h3>my name is <span id="ageTag"></span></h3>
+    <script>
+        let name = document.querySelector("#name")
+        let age= document.querySelector("#age")
+        let nameTag= document.querySelector("#nameTag")
+        let ageTag= document.querySelector("#ageTag")
+
+        let myObj = JSON.parse(localStorage.getItem("myObj"))||{}
+        nameTag.innerText = myObj.name
+        ageTag.innerText=myObj.age
+        name.addEventListener("input",(e)=>{
+              myObj.name=e.target.value
+              localStorage.setItem("myObj",JSON.stringify(myObj))
+              
+        })
+        age.addEventListener("input",(e)=>{
+              myObj.age=e.target.value
+              localStorage.setItem("myObj",JSON.stringify(myObj))
+              ageTag.innerText = e.target.value
+        })
+    </script>
+</body>
+</html>

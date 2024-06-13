@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>add task</title>
+</head>
+<body>
+    <label>add here your today,s task</label>
+    <input  class="input"><br>
+    <button class="btn">addTask</button><br><br>
+    <button class="delete1">delete</button><br><br>
+    <textarea class="task"></textarea>
+    <span id="ele">element </span>
+    <script>
+        let input = document.querySelector(".input")
+        let btn = document.querySelector(".btn");
+        let task = document.querySelector(".task")
+        let delete1 = document.querySelector(".delete1")
+        let element = document.querySelector("#ele")
+        btn.addEventListener("click",(e)=>{
+            task.value += input.value + "\n";
+            // Clear the input field
+            input.value = "";
+            let newbtn = document.createElement("button");
+             newbtn.textContent = "Delete"; 
+             let deleteBtn = document.body.appendChild(newbtn);
+             deleteBtn.addEventListener("click",(e)=>{
+                task.remove();
+                console.log(e)
+             })
+
+        })
+      delete1.addEventListener("click",()=>{
+        task.remove();
+      })
+      element.addEventListener('contextmenu', () => {
+    alert("hey")
+});
+    </script>
+</body>
+</html>
